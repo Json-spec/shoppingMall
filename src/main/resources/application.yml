@@ -20,9 +20,20 @@ mybatis-plus:
     auto-mapping-behavior: full
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   global-config:
-    # Âß¼­É¾³ýÅäÖÃ
+    # ï¿½ß¼ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     db-config:
-      # É¾³ýÇ°
+      # É¾ï¿½ï¿½Ç°
       logic-not-delete-value: 1
-      # É¾³ýºó
+      # É¾ï¿½ï¿½ï¿½ï¿½
       logic-delete-value: 0
+
+
+
+
+
+weChat:
+  url: https://api.weixin.qq.com/sns/jscode2session
+  appId: wx21cccada5843683e
+  appSecret: 91de24c7e8d2306865fe536f001f4f56
+
+
