@@ -1,7 +1,7 @@
 package com.wx.shopmall.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.wx.shopmall.entity.UserInfo;
+import com.wx.shopmall.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Param;
  * @Description:
  */
 @Mapper
-public interface UserInfoMapper extends BaseMapper<UserInfo> {
+public interface UserInfoMapper extends BaseMapper<User> {
 
     /**
      * @Author jack
@@ -20,5 +20,5 @@ public interface UserInfoMapper extends BaseMapper<UserInfo> {
      * @Param
      * @return
      **/
-    UserInfo selectByUserName(@Param("openId") String openId);
+    User selectByUserName(@Param("openId") String openId);
 }

@@ -1,5 +1,5 @@
 server:
-  port: 8084
+  port: 25678
 
 spring:
   application:
@@ -14,7 +14,7 @@ spring:
 
 
 mybatis-plus:
-  mapper-locations: classpath*:/mapper/*/*.xml
+  mapper-locations: classpath*:/mapper/*.xml
   configuration:
     map-underscore-to-camel-case: true
     auto-mapping-behavior: full
@@ -32,8 +32,8 @@ mybatis-plus:
 
 
 weChat:
-  url: https://api.weixin.qq.com/sns/jscode2session
-  appId: wx21cccada5843683e
-  appSecret: 91de24c7e8d2306865fe536f001f4f56
+  url: https://api.weixin.qq.com/sns/jscode2session?
+  appId: 91de24c7e8d2306865fe536f001f4f56
+  appSecret: wx21cccada5843683e
 
 

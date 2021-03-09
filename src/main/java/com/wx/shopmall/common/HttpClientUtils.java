@@ -82,6 +82,7 @@ String json="{\n" +
                     }
                 }
                 URI uri = builder.build();
+                // https://api.weixin.qq.com/sns/jscode2session?appid=wx21cccada5843683e&secret=91de24c7e8d2306865fe536f001f4f56&js_code=063h901w3fHyYV29jI3w3UHwEi1h901S&grant_type=authorization_code
                 // 创建http GET请求
                 HttpGet httpGet = new HttpGet(uri);
                 // 执行请求
@@ -207,7 +208,7 @@ String json="{\n" +
 
 
 
-    public static String doGetForWeChat(String url, Map<String, String> paramMap) {
+    public static String doGetForWeChat(String url, Map<String, String> paramMap,String appId , String appSecret , String grant_type , String code) {
         PrintWriter out = null;
         BufferedReader in = null;
         String result = "";

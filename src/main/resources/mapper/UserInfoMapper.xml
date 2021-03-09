@@ -3,19 +3,19 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wx.shopmall.mapper.UserInfoMapper">
 
-    <resultMap id="userInfoResultMap" type="com.wx.shopmall.entity.UserInfo">
+    <resultMap id="userInfoResultMap" type="com.wx.shopmall.entity.User">
         <id column="id" property="id"/>
         <result column="open_id" property="openId"/>
         <result column="session_key" property="sessionKey"/>
         <result column="phone" property="phone"/>
-        <result column="img_url" property="imgUrl"/>
+        <result column="avatar_url" property="avatarUrl"/>
         <result column="address" property="address"/>
-        <result column="user_name" property="userName"/>
-        <result column="sex" property="sex"/>
+        <result column="nick_name" property="nickName"/>
+        <result column="gender" property="gender"/>
     </resultMap>
 
-    <select id="selectByUserName" parameterType="java.lang.String" resultMap="userInfoResultMap">
-        select * from user_info where open_id = #{openId}
+    <select id="selectByUserName" parameterType="java.lang.String" resultType="com.wx.shopmall.entity.User">
+        select * from user u where u.open_id = #{openId}
     </select>
 
 </mapper>

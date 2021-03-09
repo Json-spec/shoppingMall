@@ -1,5 +1,7 @@
 package com.wx.shopmall.service;
 
+import com.wx.shopmall.vo.LoginParamVo;
+
 /**
  * @Auther: jack
  * @Date: 2021/2/24 13:09
@@ -13,5 +15,5 @@ public interface UserInfoControllerService {
      * @Param
      * @return
      **/
-    Object weChatLogin(String code);
+    Object weChatLogin(LoginParamVo loginParamVo);
 }
