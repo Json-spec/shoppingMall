@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wx.shopmall.mapper.WxCategoryMapper">
+
+    <resultMap id="wxCategoryResultMap" type="com.wx.shopmall.entity.WxCategory">
+        <id column="id" property="id"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="category_name" property="categoryName"/>
+        <result column="status" property="status"/>
+        <result column="sortorder" property="sortorder"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+<select id="catalogIndex" resultMap="wxCategoryResultMap">
+    select * from wx_category wc where wc.status = 1;
+</select>
+
+
+</mapper>
