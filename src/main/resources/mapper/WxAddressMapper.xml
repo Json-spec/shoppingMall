@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wx.shopmall.mapper.WxAddressMapper">
+
+    <resultMap id="wxCategoryBrandResultMap" type="com.wx.shopmall.entity.WxAddress">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="tel" property="tel"/>
+        <result column="province" property="province"/>
+        <result column="city" property="city"/>
+        <result column="county" property="county"/>
+        <result column="address_code" property="addressCode"/>
+        <result column="address_detail" property="addressDetail"/>
+        <result column="is_default" property="isDefault"/>
+        <result column="user_id" property="userId"/>
+    </resultMap>
+
+
+
+
+
+</mapper>

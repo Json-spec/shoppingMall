@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wx.shopmall.mapper.WxProductMapper">
+
+    <resultMap id="WxProductResultMap" type="com.wx.shopmall.vo.WxProductResultVo" >
+        <result column="id" property="id" />
+        <result column="wcb_id" property="wcbId" />
+        <result column="pro_name" property="proName" />
+        <result column="pro_desc" property="proDesc" />
+        <result column="pro_proice" property="proProice" />
+        <result column="is_online" property="isOnline" />
+        <result column="pro_unit" property="proUnit" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="pro_rebate" property="proRebate" />
+        <result column="pro_img" property="proImg" />
+        <result column="pro_img_list" property="proImgList" />
+        <result column="is_host" property="isHost" />
+        <result column="pro_title" property="proTitle" />
+        <result column="pro_count" property="proCount" />
+    </resultMap>
+
+    <select id="productIndex" parameterType="java.lang.Long" resultMap="WxProductResultMap">
+        select * from wx_product wp where wp.wcb_id = #{id} and wp.is_online!=2 order by is_host
+    </select>
+    
+    <select id="proDetal" parameterType="java.lang.Long" resultType="com.wx.shopmall.entity.WxProduct">
+        select * from wx_product wp where wp.id = #{id} and wp.is_online!=2 order by is_host;
+    </select>
+
+    <select id="productCount" resultType="java.lang.Integer">
+        select count(*) from wx_product wp where wp.is_online!=2
+    </select>
+
+</mapper>
