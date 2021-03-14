@@ -41,4 +41,19 @@ WHERE
     </select>
 
 
+
+    <select id="collectList" parameterType="java.lang.Long" resultType="com.wx.shopmall.vo.WxFootprintResultListVo">
+ SELECT
+        DATE_FORMAT(wf.create_time,'%Y-%m-%d') addDate,
+				wf.is_collection,
+        wf.id footprintId,
+        wp.pro_img, wp.pro_name,wp.id proId,wp.pro_desc,wp.pro_proice
+        FROM
+        wx_footprint wf
+        LEFT JOIN wx_product wp ON wf.pro_id = wp.id
+        WHERE
+        wf.user_id = #{userId} and wf.flag!=2 and wf.is_collection=1
+    </select>
+
+
 </mapper>

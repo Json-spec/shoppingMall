@@ -1,6 +1,7 @@
 package com.wx.shopmall.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.wx.shopmall.vo.WxFootprintResultListVo;
 import com.wx.shopmall.vo.WxProductResultVo;
 
 public interface WxFootprintService {
@@ -25,4 +26,22 @@ public interface WxFootprintService {
      * @return
      */
     int footprintDelete(Long id);
+
+    /**
+     * 商品收藏和取消
+     * @param userId
+     * @param proId
+     * @param type
+     * @return
+     */
+    int collectAddordelte(Long userId, Long proId, Integer type);
+
+    /**
+     * 查询商品收藏列表
+     * @param wxFootprintResultListVoPage
+     * @param userId
+     * @param type
+     * @return
+     */
+    Page<WxFootprintResultListVo> collectList(Page<WxFootprintResultListVo> wxFootprintResultListVoPage, Long userId, Integer type);
 }

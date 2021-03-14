@@ -31,6 +31,9 @@ public class WxFootprintResultListVo {
     @ApiModelProperty(value = "封面图")
     private String addDate;
 
+    @ApiModelProperty(value = "收藏 1收藏 2 不收藏")
+    private Integer isCollect;
+
 
 
 
