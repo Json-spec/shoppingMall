@@ -26,7 +26,6 @@ import javax.servlet.http.HttpServletResponse;
  * @Date: 2021/3/11 21:28
  * @Description:
  */
-@RequestMapping("/goods")
 @RestController
 @Api(tags = "商品清单")
 public class WxProductController {
@@ -45,7 +44,7 @@ public class WxProductController {
      * @Date 2021/3/10
      * @Param
      **/
-    @GetMapping(value = "/category")
+    @GetMapping(value = "/goods/category")
     @ApiOperation(value = "根据二级分类id查询商品信息")
     public RResult<Page<WxProductResultVo>> productIndex(@RequestParam("id") Long id , @RequestParam("page") Integer page , @RequestParam("limit") Integer limit) {
         Page<WxProductResultVo> wxProductResultVo = wxProductService.productIndex(new Page<WxProductResultVo>(page, limit) , id);
@@ -65,7 +64,7 @@ public class WxProductController {
      * @Param
      * @return
      **/
-    @GetMapping(value = "/detail")
+    @GetMapping(value = "/goods/detail")
     @ApiOperation(value = "根据商品id查询具体详情")
     public RResult<WxProduct> proDetal(@ApiParam(value = "商品id")
                                        @RequestParam("id") Long id ,
@@ -86,7 +85,7 @@ public class WxProductController {
      * @Param
      * @return
      **/
-    @GetMapping(value = "/count")
+    @GetMapping(value = "/goods/count")
     @ApiOperation(value = "根据商品id查询具体数量")
     public RResult<Integer> productCount(){
         Integer count = wxProductService.productCount();
