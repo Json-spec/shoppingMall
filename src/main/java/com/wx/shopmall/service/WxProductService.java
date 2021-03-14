@@ -27,7 +27,7 @@ public interface WxProductService {
      * @Param
      * @return
      **/
-    WxProduct proDetal(Long id);
+    WxProduct proDetal(Long id,Long userId);
 
     /**
      * @Author jack

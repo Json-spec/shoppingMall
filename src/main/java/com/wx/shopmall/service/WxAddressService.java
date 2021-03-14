@@ -25,7 +25,7 @@ public interface WxAddressService {
      * @Param
      * @return
      **/
-    WxAddressResultVo queryAddressList(Long id);
+    WxAddressResultVo queryAddressList(String id);
 
     /**
      * @Author jack

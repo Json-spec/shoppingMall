@@ -39,7 +39,7 @@ public class WxAddressController {
      * @return
      **/
 
-    @RequestMapping(value = "/save/{code}")
+    @RequestMapping(value = "/save/{id}")
     @ApiOperation(value = "添加收货人信息")
     public RResult saveAddressMsg(@PathVariable String id ,  @RequestBody WxAddress wxAddress){
         logger.info("参数"+wxAddress);
@@ -61,7 +61,7 @@ public class WxAddressController {
      **/
     @RequestMapping(value = "/list")
     @ApiOperation(value = "查看登录人全部收货地址")
-    public RResult<WxAddressResultVo> queryAddressList(@RequestParam("id") Long id){
+    public RResult<WxAddressResultVo> queryAddressList(@RequestParam("id") String id){
         logger.info("参数"+id);
         WxAddressResultVo wxAddressResultVo =  wxAddressService.queryAddressList(id);
         if (ObjectUtil.isNotEmpty(wxAddressResultVo)){

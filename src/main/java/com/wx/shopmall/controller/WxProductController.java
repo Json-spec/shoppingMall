@@ -68,8 +68,9 @@ public class WxProductController {
     @GetMapping(value = "/detail")
     @ApiOperation(value = "根据商品id查询具体详情")
     public RResult<WxProduct> proDetal(@ApiParam(value = "商品id")
-                                       @RequestParam("id") Long id){
-        WxProduct wxProduct = wxProductService.proDetal(id);
+                                       @RequestParam("id") Long id ,
+                                       @RequestParam("userId") Long userId){
+        WxProduct wxProduct = wxProductService.proDetal(id,userId);
         LOGGER.info("返回数据"+wxProduct);
         if (ObjectUtil.isNotEmpty(wxProduct)) {
             return RResult.success(wxProduct);
@@ -86,7 +87,7 @@ public class WxProductController {
      * @return
      **/
     @GetMapping(value = "/count")
-    @ApiOperation(value = "根据商品id查询具体详情")
+    @ApiOperation(value = "根据商品id查询具体数量")
     public RResult<Integer> productCount(){
         Integer count = wxProductService.productCount();
         LOGGER.info("返回数据"+count);

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wx.shopmall.mapper.WxFootprintMapper">
+
+
+    <resultMap id="wxFootprintResultMap" type="com.wx.shopmall.entity.WxFootprint">
+        <id column="id" property="id"/>
+        <result column="pro_id" property="proId"/>
+        <result column="user_Id" property="userId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="flag" property="flag"/>
+        <result column="is_collection" property="isCollection"/>
+    </resultMap>
+
+
+    <select id="footprintList" parameterType="java.lang.Long" resultType="com.wx.shopmall.vo.WxFootprintResultListVo">
+        SELECT
+        DATE_FORMAT(wf.create_time,'%Y-%m-%d') addDate,
+        wf.id footprintId,
+        wp.pro_img, wp.pro_name,wp.id proId,wp.pro_desc,wp.pro_proice
+        FROM
+        wx_footprint wf
+        LEFT JOIN wx_product wp ON wf.pro_id = wp.id
+        WHERE
+        wf.user_id = #{userId} and wf.flag!=2
+<!--       SELECT
+	*
+FROM
+	wx_product wp
+WHERE
+	wp.id IN (
+	SELECT
+		wf.pro_id
+	FROM
+		wx_footprint wf
+	WHERE
+	wf.user_id = #{userId}
+	)*/-->
+    </select>
+
+
+</mapper>

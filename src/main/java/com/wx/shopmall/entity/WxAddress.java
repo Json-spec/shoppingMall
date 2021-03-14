@@ -48,6 +48,9 @@ public class WxAddress {
     @ApiModelProperty(value = "是偶是默认收货人地址1默认 2 非默认")
     private Boolean isDefault;
 
+    @ApiModelProperty(value = "是否可用 1 可用 2 不可用")
+    private int flag;
+
 
 
 

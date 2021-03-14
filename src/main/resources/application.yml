@@ -29,6 +29,11 @@ mybatis-plus:
 
 
 
+#意见反馈图片保存地址linux上的（测试这是用win使用绝对路径）
+uploadImg:
+  storage: E://
+
+
 
 
 weChat:
