@@ -2,6 +2,7 @@ package com.wx.shopmall.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.wx.shopmall.entity.WxProduct;
+import com.wx.shopmall.vo.WxProductResultSeachVo;
 import com.wx.shopmall.vo.WxProductResultVo;
 
 /**
@@ -37,4 +38,15 @@ public interface WxProductService {
      * @return
      **/
     Integer productCount();
+
+    /**
+     * 商品搜索
+     * @param wxProductResultVoPage
+     * @param categoryId
+     * @param keyword
+     * @param sore
+     * @param order
+     * @return
+     */
+    Page<WxProductResultSeachVo> queryGoodsList(Page<WxProductResultSeachVo> wxProductResultVoPage, Long categoryId, String keyword, String sore, String order);
 }

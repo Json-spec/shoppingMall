@@ -1,10 +1,14 @@
 package com.wx.shopmall.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.wx.shopmall.entity.WxCategoryBrand;
+import com.wx.shopmall.vo.WxProductResultSeachVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Auther: jack
@@ -12,7 +16,7 @@ import java.util.List;
  * @Description:
  */
 @Mapper
-public interface WxCategoryBrandMapper {
+public interface WxCategoryBrandMapper extends BaseMapper<WxCategoryBrand> {
 
     /**
      * @Author jack
@@ -22,4 +26,6 @@ public interface WxCategoryBrandMapper {
      * @return
      **/
     List<WxCategoryBrand> queryBrandList(@Param("categoryId") Long categoryId);
+
+    Page<WxProductResultSeachVo> queryGoodsList(Page<WxProductResultSeachVo> wxProductResultSeachVoPage,@Param("map") Map<String, Object> map);
 }

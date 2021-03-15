@@ -6,6 +6,7 @@ import com.wx.shopmall.common.RResult;
 import com.wx.shopmall.entity.WxProduct;
 import com.wx.shopmall.service.WxProductService;
 import com.wx.shopmall.vo.CatalogIndexResultVo;
+import com.wx.shopmall.vo.WxProductResultSeachVo;
 import com.wx.shopmall.vo.WxProductResultVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -92,6 +93,29 @@ public class WxProductController {
         LOGGER.info("返回数据"+count);
        return RResult.success(count);
     }
+
+    /**
+     * 商品搜索
+     */
+
+    @GetMapping(value = "/goods/list")
+    @ApiOperation(value = "商品搜索")
+    public RResult<Page<WxProductResultSeachVo>> queryGoodsList(@RequestParam("categoryId") Long categoryId ,
+                                             @RequestParam("keyword") String keyword,
+                                             @RequestParam("sort") String sore,
+                                             @RequestParam("order") String order,
+                                             @RequestParam("page") Integer page ,
+                                             @RequestParam("limit") Integer limit){
+        Page<WxProductResultSeachVo> wxProductResultVo = wxProductService.queryGoodsList(new Page<WxProductResultSeachVo>(page, limit) , categoryId,keyword,sore,order);
+        LOGGER.info("返回数据"+wxProductResultVo);
+        if (ObjectUtil.isNotEmpty(wxProductResultVo)) {
+            return RResult.success(wxProductResultVo);
+        } else {
+            return RResult.failed();
+        }
+
+    }
+
 
 
 

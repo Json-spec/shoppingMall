@@ -6,12 +6,15 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.wx.shopmall.controller.WxProductController;
+import com.wx.shopmall.entity.WxCategoryBrand;
 import com.wx.shopmall.entity.WxFootprint;
 import com.wx.shopmall.entity.WxProduct;
+import com.wx.shopmall.mapper.WxCategoryBrandMapper;
 import com.wx.shopmall.mapper.WxFootprintMapper;
 import com.wx.shopmall.mapper.WxProductMapper;
 import com.wx.shopmall.service.WxFootprintService;
 import com.wx.shopmall.service.WxProductService;
+import com.wx.shopmall.vo.WxProductResultSeachVo;
 import com.wx.shopmall.vo.WxProductResultVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +22,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Auther: jack
@@ -39,6 +44,9 @@ public class WxProductServiceImpl implements WxProductService {
 
     @Autowired
     private WxFootprintMapper wxFootprintMapper;
+
+    @Autowired
+    private WxCategoryBrandMapper wxCategoryBrandMapper;
 
 
     @Override
@@ -70,5 +78,16 @@ public class WxProductServiceImpl implements WxProductService {
     public Integer productCount() {
         Integer count = wxProductMapper.productCount();
         return count;
+    }
+
+    @Override
+    public Page<WxProductResultSeachVo> queryGoodsList(Page<WxProductResultSeachVo> wxProductResultVoPage, Long categoryId, String keyword, String sort, String order) {
+        Map<String,Object> map = new HashMap<>();
+        map.put("categoryId",categoryId);
+        map.put("keyword",keyword);
+        map.put("sort",sort);
+        map.put("order",order);
+        Page<WxProductResultSeachVo> pageList = wxProductMapper.queryGoodslist(wxProductResultVoPage,map);
+        return pageList;
     }
 }

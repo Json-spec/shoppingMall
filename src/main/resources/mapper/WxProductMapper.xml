@@ -21,6 +21,37 @@
         <result column="pro_count" property="proCount" />
     </resultMap>
 
+    <resultMap id="WxProductResultMap1" type="com.wx.shopmall.vo.WxProductResultSeachVo" >
+        <result column="id" property="id" />
+        <result column="wcb_id" property="wcbId" />
+        <result column="pro_name" property="proName" />
+        <result column="pro_desc" property="proDesc" />
+        <result column="pro_proice" property="proProice" />
+        <result column="is_online" property="isOnline" />
+        <result column="pro_unit" property="proUnit" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="pro_rebate" property="proRebate" />
+        <result column="pro_img" property="proImg" />
+        <result column="pro_img_list" property="proImgList" />
+        <result column="is_host" property="isHost" />
+        <result column="pro_title" property="proTitle" />
+        <result column="pro_count" property="proCount" />
+        <association property="wxCategoryBrand" javaType="com.wx.shopmall.entity.WxCategoryBrand">
+            <result column="id" property="id"/>
+            <result column="category_id" property="categoryId"/>
+            <result column="brand_name" property="brandName"/>
+            <result column="brand_img" property="brandImg"/>
+            <result column="brand_state" property="baranState"/>
+            <result column="create_time" property="createTime"/>
+            <result column="update_time" property="updateTime"/>
+        </association>
+    </resultMap>
+    
+    
+    
+    
+
     <select id="productIndex" parameterType="java.lang.Long" resultMap="WxProductResultMap">
         select * from wx_product wp where wp.wcb_id = #{id} and wp.is_online!=2 order by is_host
     </select>
@@ -31,6 +62,15 @@
 
     <select id="productCount" resultType="java.lang.Integer">
         select count(*) from wx_product wp where wp.is_online!=2
+    </select>
+
+    <select id="queryGoodslist" parameterType="java.util.Map" resultMap="WxProductResultMap1">
+        select wp.*,wcb.* from wx_product wp
+        left join wx_category_brand wcb on wp.wcb_id = wcb.id where 1=1
+            <if test="map.keyword!=null and map.keyword!=''">
+                and wp.pro_desc like concat('%',#{map.keyword},'%')
+            </if>
+        order by wp.${map.sort} ${map.order}
     </select>
 
 </mapper>
